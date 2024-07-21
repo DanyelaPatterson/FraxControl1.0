@@ -1,0 +1,45 @@
+@model List<VisitaModel>
+@{
+    ViewData["Title"] = "Listado de Visitas Registradas";
+}
+
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped">
+    <thead>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Placas</th>
+            <th scope="col">Fecha de visita</th>
+            
+           
+        </thead>
+    <tbody>
+@foreach (var visita in Model)
+{
+
+    <tr>
+        <td>@visita.Id</td>
+        <td>@visita.Name</td>
+        <td>@visita.Apellido</td>
+        <td>@visita.Marca</td>
+        <td>@visita.Modelo</td>
+        <td>@visita.Placas</td>
+        <td>@visita.FechaVisita</td>
+
+        <td>
+            <a class="btn btn-outline-info" asp-action="EditVisita" asp-controller="Visitas" asp-route-id="@visita.Id">Editar</a>
+            <a class="btn btn-outline-info" asp-action="DeleteVisita" asp-controller="Visitas" asp-route-id="@visita.Id">Borrar</a>
+        </td>
+    </tr>
+}
+    </tbody>
+    <tfoot></tfoot>
+</table>
+
+ <a class="btn btn-outline-info" asp-action="AddVisita" asp-controller="Visitas">Agregar visita</a>
+

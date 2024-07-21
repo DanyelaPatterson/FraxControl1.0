@@ -1,0 +1,46 @@
+@model VisitaModel
+
+@{
+    ViewData["Title"] = "Alta de visitante";
+}
+
+<div class="text-center">
+    <h1 class="display-2"> Alta de visitante</h1>
+</div>
+
+<div asp-validation-summary="All" class="Text-danger"></div>
+
+<form asp-controller="Visitas" asp-action="AddVisita">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Nombre del visitante </label>
+        <input type="text" class="form-control" asp-for="Name" placeholder="Escriba el nombre del visitante" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" asp-for="Apellido" placeholder="Escriba el apellido del visitante" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Marca" class="form-label">Marca</label>
+        <input type="text" class="form-control" asp-for="Marca" placeholder="Escriba la marca del automóvil" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Modelo" class="form-label">Modelo</label>
+        <input type="text" class="form-control" asp-for="Modelo" placeholder="Escriba el modelo del automóvil" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Placas" class="form-label">Placas</label>
+        <input type="text" class="form-control" asp-for="Placas" placeholder="Escriba las placas del automóvil" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FechaVisita" class="form-label">Fecha de visita</label>
+        <input  id="datepicker" width="276" class="form-control" asp-for="FechaVisita" placeholder="Escriba las placas del automóvil" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+    <a asp-controller="Visitas" asp-action="AddVisita" class="btn btn-secundary mb-3"> Regresar </a>
+
+</form>

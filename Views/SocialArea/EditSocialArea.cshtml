@@ -1,0 +1,32 @@
+@model SocialAreaModel
+
+@{
+    ViewData["Title"] = "Edición de reserva";
+}
+
+<div class="text-center">
+    <h1 class="display-2"> Edición de reserva</h1>
+</div>
+
+<div asp-validation-summary="All" class="Text-danger"></div>
+
+<form asp-controller="SocialArea" asp-action="EditSocialArea">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Nombre de la reserva </label>
+        <input type="text" class="form-control" asp-for="Name" placeholder="Escriba el nombre de la persona que reserva" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" asp-for="Apellido" placeholder="Escriba el apellido" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="FechaReserva" class="form-label">Fecha de reserva</label>
+        <input  id="datepicker" width="276" class="form-control" asp-for="FechaReserva" placeholder="Escriba la fecha de reserva" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+    <a asp-controller="SocialArea" asp-action="EditSocialArea" class="btn btn-secundary mb-3"> Regresar </a>
+
+</form>

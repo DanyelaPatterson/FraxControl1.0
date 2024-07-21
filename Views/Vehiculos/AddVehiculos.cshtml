@@ -1,0 +1,41 @@
+@model VehiculoModel
+
+@{
+    ViewData["Title"] = "Alta de vehículo";
+}
+
+<div class="text-center">
+    <h1 class="display-2"> Alta de Vehículo</h1>
+</div>
+
+<div asp-validation-summary="All" class="Text-danger"></div>
+
+<form asp-controller="Vehiculos" asp-action="AddVehiculos">
+    <div class="mb-3">
+        <label asp-for="Marca" class="form-label">Marca del auto </label>
+        <input type="text" class="form-control" asp-for="Marca" placeholder="Escriba la marca del automóvil" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Modelo" class="form-label">Modelo</label>
+        <input type="text" class="form-control" asp-for="Modelo" placeholder="Escriba el modelo del automóvil" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Owner" class="form-label">Dueño</label>
+        <input type="text" class="form-control" asp-for="Owner" placeholder="Escriba el nombre del dueño del automóvil" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Direccion" class="form-label">Dirección</label>
+        <input type="text" class="form-control" asp-for="Direccion" placeholder="Escriba la dirección del dueño" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Placas" class="form-label">Placas</label>
+        <input type="text" class="form-control" asp-for="Placas" placeholder="Escriba las placas del automóvil" />
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+    <a asp-controller="Vehiculo" asp-action="AddVehiculos" class="btn btn-secundary mb-3"> Regresar </a>
+
+</form>

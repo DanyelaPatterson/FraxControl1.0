@@ -1,0 +1,189 @@
+@{
+  Layout = "~/Views/User/_LoginLayout.cshtml";
+}
+
+@model RegistryViewModel
+@{
+  ViewData["Title"] = "Sign In";
+}
+
+ @section styles {
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body{
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        background: linear-gradient(135deg, #5B849A, #6D9A5B);  
+    }
+    .container{
+        max-width: 700px;
+        width: 100%;
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 5px;
+    }
+    .container .Title{
+        font-size: 25px;
+        font-weight: 500;
+        position: relative;
+    }
+    .container .Title::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        background: linear-gradient(135deg, #5B849A, #6D9A5B);
+    }
+    .container form .user-details{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px 0 12px 0;
+    }
+    form .user-details .input-box{
+        margin-bottom: 15px;
+        width: calc(100% / 2 - 20px);
+    }
+    .user-details .input-box .details{
+        display: block;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+    .user-details .input-box input{
+        height: 45px;
+        width: 100%;
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding-left: 15px;
+        font-size: 16px;
+        border-bottom-width: 2px;
+        transition: all 0.3s ease;
+    }
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid{
+        border-color: #5B849A;
+    }
+    form .button{
+        height: 45px;
+        margin: 45px 0;
+    }
+    form .button input{
+        height: 100%;
+        width: 100%;
+        outline: none;
+        color: #fff;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        background: linear-gradient(135deg, #5B849A, #6D9A5B);
+    }
+    form .button input :hover{
+        background: linear-gradient(-135deg, #5B849A, #6D9A5B);
+    }
+    //Contraseña
+    .show-password {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .show-password input[type="checkbox"] {
+        margin-right: 5px;
+    }
+    .field-validation-error {
+        color: red;
+    }
+
+  </style>
+}
+
+<div class="container">
+  <div class="Title">Sign In</div>
+  <form type="submit" asp-controller="User" asp-action="Registry">
+    <div class="user-details">
+
+        <div class="input-box">
+            <span class="details">Nombre Completo</span>
+            <input asp-for="FullName" type="text" placeholder="Escriba su nombre" required>
+            <span asp-validation-for="FullName" class="text-danger" ></span>
+        </div>
+
+        <div class="input-box">
+            <span class="details">Nombre de usuario</span>
+            <input asp-for="Username" type="text" placeholder="Escriba su nombre de usuario" required>
+            <span asp-validation-for="Username" class="text-danger" ></span>
+        </div>
+
+        <div class="input-box">
+            <span class="details">Email</span>
+            <input asp-for="Email" type="text" placeholder="Escriba su email" required>
+            <span asp-validation-for="Email" class="text-danger" ></span>
+        </div>
+
+        <div class="input-box">
+            <span class="details">Numero celular</span>
+            <input asp-for="PhoneNumber" type="text" placeholder="Escriba su numero de celular" required>
+            <span asp-validation-for="PhoneNumber" class="text-danger" ></span>
+        </div>
+
+        <div class="input-box">
+            <span class="details">Contraseña</span>
+            <input asp-for="Password" type="password" placeholder="Escriba su contraseña" required>
+            <span asp-validation-for="Password" class="text-danger" ></span>
+        </div>
+
+        <div class="input-box">
+            <span class="details">Confirmar contraseña</span>
+            <input asp-for="ConfirmPassword" placeholder="Las contraseñas deben de coincidir" required>
+            <span asp-validation-for="ConfirmPassword" class="text-danger" ></span>
+        </div>
+    </div>
+
+    <div class="show-password">
+            <input id="showPassword" type="checkbox">
+            <label for="showPassword">Mostrar Contraseña</label>
+        </div>
+    
+    <div class="button">
+        <input type="submit" value="Registrar">
+    </div>
+
+    <div class="button">
+        <a asp-controller="User" asp-action="Login">Entrar</a>
+        <input type="submit" asp-controller="User" asp-action="Login" value="Iniciar Sesion">
+    </div>
+
+  </form>
+</div>
+
+@section scripts {
+    <script>
+        document.getElementById("showPassword").addEventListener("change", function () {
+            var password = document.getElementById("Password");
+            var confirmPassword = document.getElementById("ConfirmPassword");
+
+            if (this.checked) {
+                password.type = "text";
+                confirmPassword.type = "text";
+            } else {
+                password.type = "password";
+                confirmPassword.type = "password";
+            }
+        });
+        
+    </script>
+}

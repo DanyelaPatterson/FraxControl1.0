@@ -1,0 +1,23 @@
+@using FraxControl.Models
+@model SocialAreaModel
+
+<h3 class="mb-3"></h3>
+
+<form asp-controller="SocialArea" asp-action="DeleteSocialArea">
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">AVISO</h5>
+            <h6 class="card-subtitle mb-2 text-body-secundary">
+                ¿Está seguro de que desea borrar la reservación?
+            </h6>
+        </div>
+    </div>
+
+    <input type="hidden" asp-for="Id"/>
+    <button type="submit" class="btn btn-danger">Borrar</button>
+    <a class="btn btn-secundary" asp-controller="SocialArea" asp-action="SocialAreaList">Cancelar</a>
+
+
+
+</form>

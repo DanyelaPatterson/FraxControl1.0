@@ -1,0 +1,40 @@
+@model List<SocialAreaModel>
+@{
+    ViewData["Title"] = "Reserva de Area Social";
+}
+
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped">
+    <thead>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Fecha de visita</th>
+            
+           
+        </thead>
+    <tbody>
+@foreach (var reserva in Model)
+{
+
+    <tr>
+        <td>@reserva.Id</td>
+        <td>@reserva.Name</td>
+        <td>@reserva.Apellido</td>
+        <td>@reserva.FechaReserva</td>
+        
+
+        <td>
+            <a class="btn btn-outline-info" asp-action="AddSocialArea" asp-controller="SocialArea" asp-route-id="@reserva.Id">Editar</a>
+            <a class="btn btn-outline-info" asp-action="DeleteSocialArea" asp-controller="SocialArea" asp-route-id="@reserva.Id">Borrar</a>
+        </td>
+    </tr>
+}
+    </tbody>
+    <tfoot></tfoot>
+</table>
+
+ <a class="btn btn-outline-info" asp-action="AddSocialArea" asp-controller="SocialArea">Agregar visita</a>
+

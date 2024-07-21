@@ -1,0 +1,43 @@
+@model List<VehiculoModel>
+
+@{
+    ViewData["Title"] = "Vehículos de Residentes";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<table class="table table-striped">
+    <thead>
+            <th scope="col">#</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Dueño</th>
+            <th scope="col">Placas</th>
+            <th scope="col">Dirección</th>
+            
+           
+        </thead>
+    <tbody>
+@foreach (var vehiculo in Model)
+{
+
+    <tr>
+        <td>@vehiculo.Id</td>
+        <td>@vehiculo.Marca</td>
+        <td>@vehiculo.Modelo</td>
+        <td>@vehiculo.Owner</td>
+        <td>@vehiculo.Placas</td>
+        <td>@vehiculo.Direccion</td>
+
+        <td>
+            <a class="btn btn-outline-info" asp-action="EditVehiculos" asp-controller="Vehiculos" asp-route-id="@vehiculo.Id">Editar</a>
+            <a class="btn btn-outline-info" asp-action="DeleteVehiculos" asp-controller="Vehiculos" asp-route-id="@vehiculo.Id">Borrar</a>
+        </td>
+    </tr>
+}
+    </tbody>
+    <tfoot></tfoot>
+</table>
+
+ <a class="btn btn-outline-info" asp-action="AddVehiculos" asp-controller="Vehiculos">Agregar Vehiculo</a>
